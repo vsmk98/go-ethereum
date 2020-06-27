@@ -225,6 +225,14 @@ func (api *ExternalSigner) SignDataWithPassphrase(account accounts.Account, pass
 	return nil, fmt.Errorf("password-operations not supported on external signers")
 }
 
+func (api *ExternalSigner) LockAccount() (bool, error) {
+	return false, fmt.Errorf("operation not supported on external signers")
+}
+
+func (api *ExternalSigner) UnLockAccount(password string, duration *uint64) (bool, error) {
+	return false, fmt.Errorf("operation not supported on external signers")
+}
+
 func (api *ExternalSigner) listAccounts() ([]common.Address, error) {
 	var res []common.Address
 	if err := api.client.Call(&res, "account_list"); err != nil {
